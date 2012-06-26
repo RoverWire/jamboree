@@ -5,7 +5,7 @@
 			<td><?php echo $this->ajuste->campos; ?></td>
 		</tr>
 		<tr>
-			<th class="odd-th" align="right">Número de Tropas:</th>
+			<th class="odd-th" align="right">Número de Comunidades:</th>
 			<td class="odd-row"><?php echo $this->ajuste->manadas; ?></td>
 		</tr>
 		<tr>

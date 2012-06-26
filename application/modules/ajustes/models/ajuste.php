@@ -51,7 +51,7 @@ class ajuste extends MY_Model {
 			for($j=0; $j<$manadas; $j++)
 			{
 				$this->db->set('idcampo', ($i+1));
-				$this->db->set('nombre', 'Tropa '.($j+1));
+				$this->db->set('nombre', 'Comunidad '.($j+1));
 				$this->db->insert($this->_tabla_manadas);
 			}
 		}

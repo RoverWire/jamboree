@@ -7,8 +7,8 @@ class registros extends Controller{
 		$this->load->model('registro');
 		$this->load->model('campos/campo');
 		$this->load->model('campos/manada');
-		$this->template->write('sidebar', '<li><a href="'.ruta('registros').'"><span class="icon_lateral icon_registro"></span><u>Nueva Patrulla</u> <br /><small>agregar nuevas patrullas</small></a></li>');
-		$this->template->write('sidebar', '<li><a href="'.ruta('registros/preregistro').'"><span class="icon_lateral icon_buscar"></span><u>Patrulla Preregistrada</u> <br /><small>buscar por cum de scouter</small></a></li>');
+		$this->template->write('sidebar', '<li><a href="'.ruta('registros').'"><span class="icon_lateral icon_registro"></span><u>Nuevo Equipo</u> <br /><small>agregar nuevos equipos</small></a></li>');
+		$this->template->write('sidebar', '<li><a href="'.ruta('registros/preregistro').'"><span class="icon_lateral icon_buscar"></span><u>Equipo Preregistrado</u> <br /><small>buscar por cum de scouter</small></a></li>');
 	}
 	
 	public function index()

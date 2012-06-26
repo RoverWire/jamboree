@@ -1,4 +1,4 @@
-<h1 class="titulo_seccion">Detalles de la Patrulla</h1>
+<h1 class="titulo_seccion">Detalles del Equipo</h1>
 <form cform class="uniForm" action="" method="post" enctype="multipart/form-data" name="formCUM" id="formCUM">
   <table class="vgrid" width="100%" cols="2">
     <tr>
@@ -64,8 +64,8 @@
           <thead>
           <tr>
             <th scope="col">Campo</th>
-            <th scope="col">Tropa</th>
-            <th scope="col">Patrulla</th>
+            <th scope="col">Comunidad</th>
+            <th scope="col">Equipo</th>
           </tr>
           </thead>
           <tbody>
@@ -81,7 +81,7 @@
 	 ?>
     <div class="pieBtn">
 		<button id="btn_asignar" type="button"><span class="ui-icon ui-icon-check"></span> Asignar Campo</button>
-        <button id="btn_modificar" type="button"><span class="ui-icon ui-icon-pencil"></span> Modificar Patrulla</button>
+        <button id="btn_modificar" type="button"><span class="ui-icon ui-icon-pencil"></span> Modificar Equipo</button>
         <button id="btn_regresar" type="button"><span class="ui-icon ui-icon-arrowthick-1-w"></span> Regresar</button>
 	</div>
 </form>

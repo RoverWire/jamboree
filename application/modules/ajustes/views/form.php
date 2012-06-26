@@ -23,7 +23,7 @@
 			<label for="manadas">Tropas</label>
 			<span class="inputHolder">
 	        	<input name="Datos[manadas]" id="manadas" value="<?php echo $manadas; ?>" size="5" maxlength="3" type="text" />
-	        	<p class="formHint">número de manadas que existiran por campo.</p>
+	        	<p class="formHint">número de comuniades que existiran por campo.</p>
 				<?php echo form_error('Datos[manadas]'); ?>
 			</span>
 	    </div>

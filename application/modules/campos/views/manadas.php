@@ -8,7 +8,7 @@
 	  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="grid">
 		 <thead>
           <tr>
-		    <th width="25%" scope="col">Patrulla</th>
+		    <th width="25%" scope="col">Equipo</th>
 		    <th width="63%" scope="col">Provincia</th>
 		    <th width="7%" scope="col">Elementos</th>
 		    <th width="5%" scope="col">Ver</th>
