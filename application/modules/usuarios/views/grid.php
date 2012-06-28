@@ -24,5 +24,5 @@
         ?>
 <script type="text/javascript">
 	$('#offset').val(<?php echo $offset; ?>);
-	$('#total').val(<?php echo $this->miembro->total_registros; ?>);
+	$('#total').val(<?php echo $this->usuario->total_registros; ?>);
 </script>

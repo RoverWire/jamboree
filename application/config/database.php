@@ -52,7 +52,7 @@ $db['default']['dbcollat'] = "utf8_general_ci";
 
 $db['buap']['hostname'] = "localhost";
 $db['buap']['username'] = "lperez";
-$db['buap']['password'] = "Rally@Rover2010";
+$db['buap']['password'] = "";
 $db['buap']['database'] = "registros";
 $db['buap']['dbdriver'] = "mysql";
 $db['buap']['dbprefix'] = "";
