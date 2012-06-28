@@ -51,7 +51,7 @@ class registros extends Controller{
 		$this->template->add_css('temas/registro/css/jquery.gritter.css');
 		$this->template->add_js('js/jquery.uniform.js');
 		
-		$this->template->write('content', '<h1 class="titulo_seccion">Nueva Patrulla</h1>');
+		$this->template->write('content', '<h1 class="titulo_seccion">Nuevo Equipo</h1>');
 		$this->template->write_view('content', 'nuevo');
 		$this->template->render();	
 	}
@@ -89,7 +89,7 @@ class registros extends Controller{
 		
 		if($_POST)
 		{
-			$this->form_validation->set_rules('asignado', 'Tropa', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('asignado', 'Comunidad', 'trim|required|xss_clean');
 			if($this->form_validation->run()){
 				$this->registro->borrar_asignacion($cum);
 				$this->registro->asignar_manada($cum, $this->input->post('asignado'));
@@ -103,7 +103,7 @@ class registros extends Controller{
 		
 		
 		$this->template->add_js('js/jquery.zebragrid.js');
-		$this->template->write('content', '<h1 class="titulo_seccion">Asignar Patrulla</h1>');
+		$this->template->write('content', '<h1 class="titulo_seccion">Asignar Comunidad</h1>');
 		$this->campo->consultar();
 		$this->template->write_view('content', 'campos');
 		$this->campo->liberar_resultados();
@@ -133,7 +133,7 @@ class registros extends Controller{
 		$this->template->add_js('js/jquery.gritter.min.js');
 		$this->template->add_css('temas/registro/css/jquery.gritter.css');
 		$this->template->add_js('js/jquery.uniform.js');
-		$this->template->write('content', '<h1 class="titulo_seccion">Buscar Patrulla Preregistrada</h1>');
+		$this->template->write('content', '<h1 class="titulo_seccion">Buscar Equipo Preregistrado</h1>');
 		$this->template->write_view('content', 'registrado');
 		$this->template->render();
 	}
@@ -223,7 +223,7 @@ class registros extends Controller{
 		$this->template->add_js('js/jquery.uniform.js');
 		$this->template->add_js('js/jquery.zebragrid.js');
 		
-		$this->template->write('content', '<h1 class="titulo_seccion">Modificar Patrulla</h1>');
+		$this->template->write('content', '<h1 class="titulo_seccion">Modificar Equipo</h1>');
 		$this->registro->detalles($cum);
 		$this->template->write_view('content', 'modificar');
 		

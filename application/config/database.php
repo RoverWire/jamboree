@@ -50,6 +50,21 @@ $db['default']['cachedir'] = "";
 $db['default']['char_set'] = "utf8";
 $db['default']['dbcollat'] = "utf8_general_ci";
 
+$db['buap']['hostname'] = "localhost";
+$db['buap']['username'] = "lperez";
+$db['buap']['password'] = "Rally@Rover2010";
+$db['buap']['database'] = "registros";
+$db['buap']['dbdriver'] = "mysql";
+$db['buap']['dbprefix'] = "";
+$db['buap']['pconnect'] = TRUE;
+$db['buap']['db_debug'] = FALSE;
+$db['buap']['cache_on'] = FALSE;
+$db['buap']['cachedir'] = "";
+$db['buap']['char_set'] = "utf8";
+$db['buap']['dbcollat'] = "utf8_general_ci";
+$db['buap']['swap_pre'] = "";
+$db['buap']['autoinit'] = TRUE;
+$db['buap']['stricton'] = FALSE;
 
 /* End of file database.php */
 /* Location: ./system/application/config/database.php */
