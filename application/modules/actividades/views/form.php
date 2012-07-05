@@ -1,4 +1,4 @@
-<form class="uniform">
+<form class="uniForm" name="usuario" id="usuario" action="" method="post" enctype="multipart/form-data">
 	<fieldset class="inlineLabels">
 	<?php
 		if(validation_errors()){
@@ -21,7 +21,19 @@
 		</div>
 
 		<div class="ctrlHolder">
-			<label for="capacidad">Nombre</label>
+			<label for="tipo">Tipo</label>
+			<span class="inputHolder">
+				<select name="Datos[tipo]" id="tipo">
+					<option value="Individual" <?php echo ($tipo == "Individual") ? 'selected':'' ?>>Individual</option>
+					<option value="Equipo" <?php echo ($tipo == "Equipo") ? 'selected':'' ?>>Equipo</option>
+				</select>
+				<p class="formHint">tipo de la actividad.</p>
+				<?php echo form_error('Datos[tipo]'); ?>
+			</span>
+		</div>
+
+		<div class="ctrlHolder">
+			<label for="capacidad">Capacidad</label>
 			<span class="inputHolder">
 				<input name="Datos[capacidad]" id="capacidad" value="<?php echo $capacidad; ?>" size="35" maxlength="150" type="text" />
 				<p class="formHint">capacidad de equipos / elementos.</p>

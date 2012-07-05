@@ -6,6 +6,7 @@ class ajustes extends Controller {
 		$this->load->model('ajuste');
 		$this->template->write('sidebar', '<li><a href="'.ruta('ajustes/editar').'"><span class="icon_lateral icon_credencial"></span><u>Configurar</u> <br /><small>editar parámetros de la herramienta</small></a></li>');
 		$this->template->write('sidebar', '<li><a href="'.ruta('ajustes/generar_campos').'"><span class="icon_lateral icon_buscar"></span><u>Crear Campos</u> <br /><small>crear estructura de campos</small></a></li>');
+		$this->template->write('sidebar', '<li><a href="'.ruta('actividades').'"><span class="icon_lateral icon_registro"></span><u>Actividades</u> <br /><small>gestionar actividades</small></a></li>');
 		/*
 		$this->template->write('sidebar', '<li><a href="#"><span class="icon_lateral icon_base"></span><u>Importar REGNAL</u> <br /><small>importar datos de membresía.</small></a></li>');
 		$this->template->write('sidebar', '<li><a href="#"><span class="icon_lateral icon_base"></span><u>Importar Pagos</u> <br /><small>importar datos de pagos.</small></a></li>');

@@ -64,6 +64,67 @@ class Actividades extends Controller {
 
 	public function nueva()
 	{
+		if ($_POST) 
+		{
+			$datos = $this->input->post('Datos');
+			$this->form_validation->set_error_delimiters('<span class="error-form">', '</span>');
+			$this->form_validation->set_rules('Datos[nombre]', 'Nombre', 'required|trim');
+			$this->form_validation->set_rules('Datos[capacidad]', 'Capacidad', 'required|integer|trim');
+			$this->form_validation->set_rules('Datos[tipo]', 'Tipo', 'required|trim');
+			if ($this->form_validation->run()) 
+			{
+				if($this->actividad->agregar($this->input->post('Datos')))
+				{
+					$msg['title'] = 'Actividad Agregada';
+					$msg['text']  = sprintf('La actividad %s ha sido añadida a las actividades del evento.', $datos['nombre']);
+					$msg['image'] = relative_root('img/checkmark_64.png');
+					$dialog = jgritter_script($msg);
+					$this->session->set_flashdata('extrascript', $dialog);
+					redirect('actividades');
+				}	
+			}
+		}
+		else
+		{
+			$datos = $this->actividad->arreglo_campos();
+		}
+		$this->template->write('content', '<h1 class="titulo_seccion">Agregar actividad nueva</h1>');
+		$this->template->write_view('content', 'form', $datos);
+		$this->template->add_js('js/jquery.uniform.js');
+		$this->template->render();
+	}
+
+	public function editar($id)
+	{
+		if($_POST)
+		{
+			$datos = $this->input->post('Datos');
+			$this->form_validation->set_error_delimiters('<span class="error-form">', '</span>');
+			$this->form_validation->set_rules('Datos[nombre]', 'Nombre', 'required|trim');
+			$this->form_validation->set_rules('Datos[capacidad]', 'Capacidad', 'required|integer|trim');
+			$this->form_validation->set_rules('Datos[tipo]', 'Tipo', 'required|trim');
+			if ($this->form_validation->run())
+			{
+				if($this->actividad->actualizar($id, $this->input->post('Datos')))
+				{
+					$msg['title'] = 'Actividad Actualizada';
+					$msg['text']  = sprintf('La actividad %s ha sido actualizada en el listado del sistema.', $datos['nombre']);
+					$msg['image'] = relative_root('img/checkmark_64.png');
+					$dialog = jgritter_script($msg);
+					$this->session->set_flashdata('extrascript', $dialog);
+					redirect('actividades');
+				}
+			}
+		}
+		else
+		{
+			$c = array('id' => $id);
+			$this->actividad->consultar($c, 0, 1);
+			$datos = $this->actividad->datos[0];
+		}
+		$this->template->write('content', '<h1 class="titulo_seccion">Editar datos de actividad</h1>');
+		$this->template->write_view('content', 'form', $datos);
+		$this->template->add_js('js/jquery.uniform.js');
 		$this->template->render();
 	}
 

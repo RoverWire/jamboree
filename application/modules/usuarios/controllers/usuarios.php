@@ -14,8 +14,8 @@ class usuarios extends Controller
 	{
 		$this->usuario->consultar('', 0, 15);
 		$config['base_url']   = '#';
-        $config['total_rows'] = $this->usuario->total_registros;
-        $config['per_page']   = 15;
+		$config['total_rows'] = $this->usuario->total_registros;
+		$config['per_page']   = 15;
 		$config['cur_page']   = 0; 
 		$this->pagination->initialize($config);
 		
@@ -56,8 +56,8 @@ class usuarios extends Controller
 	public function grid_pagination($offset = 0, $total = 0)
 	{
 		$config['base_url']   = '#';
-        $config['total_rows'] = $total;
-        $config['per_page']   = 15;
+		$config['total_rows'] = $total;
+		$config['per_page']   = 15;
 		$config['cur_page']   = $offset; 
 		$this->pagination->initialize($config);
 		echo $this->pagination->create_links();
@@ -92,7 +92,7 @@ class usuarios extends Controller
 		}
 		$this->template->write('content', '<h1 class="titulo_seccion">Agregar usuario nuevo</h1>');
 		$this->template->write_view('content', 'form', $datos);
-		$this->template->add_js('/js/jquery.uniform.js');
+		$this->template->add_js('js/jquery.uniform.js');
 		$this->template->render();
 	}
 	
@@ -169,7 +169,7 @@ class usuarios extends Controller
 					$msg['image'] = relative_root('img/checkmark_64.png');
 					$script = '$(function() { '.jgritter_script($msg).'});';
 					$this->template->add_js('js/jquery.gritter.min.js');
-		            $this->template->add_css('temas/registro/css/jquery.gritter.css');
+					$this->template->add_css('temas/registro/css/jquery.gritter.css');
 					$this->template->add_js($script, 'embed');
 					$this->session->set_userdata('ses_nombre', $_POST['Datos']['nombre']);
 				}
