@@ -334,13 +334,14 @@ class Controller
 	/** PHP4 compatibility **/
 	public function Controller() {
 		
+		session_start();
 		$this->permitir_acceso  = FALSE;
 		$this->paginas_publicas = array('/', 'index.php/', 'usuarios/login', 'usuarios/logout');
 		
 		/* Verificamos si está permitido el acceso */
 		$actual = $this->uri->segment(1, '') . '/' . $this->uri->segment(2, '');
 		$publica = in_array($actual, $this->paginas_publicas);
-		if( ! $publica AND ! $this->session->userdata('ses_activo'))
+		if( ! $publica AND (! $this->session->userdata('ses_activo') || ! $_SESSION['ses_activo']))
 		{
 			redirect('');
 		}

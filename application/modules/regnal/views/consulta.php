@@ -5,6 +5,8 @@
 			<option value="nombre">Nombre</option>
 			<option value="cum">CUM</option>
             <option value="nivel">Nivel</option>
+            <option value="provincia">Provincia</option>
+            <option value="localidad">Localidad</option>
 		</select>
 		<select name="criterio" id="criterio">
         	<option value="like">Contiene</option>

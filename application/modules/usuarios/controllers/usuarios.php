@@ -204,6 +204,11 @@ class usuarios extends Controller
 								   'ses_usuario'   => $this->usuario->usuario,
 								   'ses_tipo'      => $this->usuario->tipo
 							   );
+
+				$_SESSION['ses_activo']		= TRUE;
+				$_SESSION['ses_idusuario'] 	= $this->usuario->id;
+				$_SESSION['ses_nombre'] 	= $this->usuario->nombre;
+
 				$this->session->set_userdata($datos);
 				redirect('usuarios/inicio');
 			}
