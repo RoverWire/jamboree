@@ -128,6 +128,19 @@ class Actividades extends Controller {
 		$this->template->render();
 	}
 
+	public function asignar($cum = '')
+	{
+		if (empty($cum)) {
+			redirect('registros');
+		}
+
+		$this->load->model('registros/registro');
+		$this->load->model('regnal/miembro');
+		$this->registro->detalles($cum);
+
+		$this->template->render();
+	}
+
 }
 
 /* End of file actividades.php */
