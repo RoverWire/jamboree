@@ -1,5 +1,4 @@
 <?php
-#<a href="<?php echo ruta('campos/ver/'.$this->campo->idcampo);
 for($i=0; $i<$this->campo->numero_registros; $i++)
 {
 ?>

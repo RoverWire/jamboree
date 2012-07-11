@@ -55,5 +55,8 @@ $(function() {
 	$('button.sel_campo').click(function(){
 		window.location = '<?php echo ruta('registros/paso3/'.$cum); ?>' + '/' + $(this).attr('name');
 	});
+	$('#btn_cancelar').click(function(){
+		window.location = '<?php echo ruta('registros/paso2/'.$cum); ?>';
+	});
 });
 </script>

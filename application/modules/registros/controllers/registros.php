@@ -42,7 +42,7 @@ class registros extends Controller{
 			{
 				if($this->registro->seisena_nueva($this->input->post('scouter'), $this->input->post('lobato')))
 				{
-					redirect('registros/paso2/'.$this->input->post('scouter'));
+					redirect('actividades/asignar/'.$this->input->post('scouter'));
 				}
 			}
 		}

@@ -138,6 +138,12 @@ class Actividades extends Controller {
 		$this->load->model('regnal/miembro');
 		$this->registro->detalles($cum);
 
+		$Datos = array('grupal' => '');
+		$this->template->add_js('js/jquery.uniform.js');
+		$this->template->write('content', '<h1 class="titulo_seccion">Asignar Actividades</h1>');
+		$this->template->add_js('js/chosen.jquery.js');
+		$this->template->add_css('temas/registro/css/chosen.css');
+		$this->template->write_view('content', 'asignacion', $Datos);
 		$this->template->render();
 	}
 
