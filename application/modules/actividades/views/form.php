@@ -36,7 +36,7 @@
 			<label for="capacidad">Capacidad</label>
 			<span class="inputHolder">
 				<input name="Datos[capacidad]" id="capacidad" value="<?php echo $capacidad; ?>" size="35" maxlength="150" type="text" />
-				<p class="formHint">capacidad de equipos / elementos.</p>
+				<p class="formHint">capacidad en equipos / elementos según corresponda.</p>
 				<?php echo form_error('Datos[capacidad]'); ?>
 			</span>
 		</div>

@@ -27,7 +27,7 @@ class Actividad extends MY_Model{
 		foreach ($query->result() as $row) {
 			$options .= '<option value="'.$row->id.'"';
 			$options .= ($row->id == $value) ? ' selected>':'>';
-			$options .= $row->nombre.'</option>';
+			$options .= $row->nombre.'</option>'."\n";
 		}
 
 		return $options;
@@ -53,11 +53,45 @@ class Actividad extends MY_Model{
 		return $options;
 	}
 
-	public function asignar($datos)
+	public function asignar($scouter, $grupal, $individual)
 	{
-		if(is_array($datos))
+		if(is_array($grupal) && is_array($individual) && !empty($scouter))
 		{
-			
+			$exito = TRUE;
+			$this->db->where('(ocupacion + '.count($individual).') < capacidad')->where('id', $grupal['grupal1'])->from($this->tabla['nombre']);
+			$result = $this->db->count_all_results();
+
+			if($result){
+				$this->db->where('scouter', $scouter)->update('seisenas', array('actividad1' => $grupal['grupal1']));
+				$this->db->simple_query("UPDATE actividades SET ocupacion=ocupacion+1 WHERE id=".$grupal['grupal1'].";");
+			}else{
+				$exito = FALSE;
+			}
+
+			$this->db->where('ocupacion + '.count($individual).') < capacidad')->where('id', $grupal['grupal2'])->from($this->tabla['nombre']);
+			$result = $this->db->count_all_results();
+
+			if($result){
+				$this->db->where('scouter', $scouter)->update('seisenas', array('actividad1' => $grupal['grupal2']));
+				$this->db->simple_query("UPDATE actividades SET ocupacion=ocupacion+1 WHERE id=".$grupal['grupal2'].";");
+			}else{
+				$exito = FALSE;
+			}
+
+			$cum = array_keys($individual);
+			for($i=0; $i<count($individual); $i++){
+				$act = $individual[$cum[$i]];
+				$this->db->where('ocupacion < capacidad')->where('id', $act)->from($this->tabla['nombre']);
+				$result = $this->db->count_all_results();
+				if($result){
+					$this->db->simple_query("UPDATE participantes SET actividad='$act' WHERE cum='".$cum[$i]."' LIMIT 1;");
+					$this->db->simple_query("UPDATE actividades SET ocupacion=ocupacion+1 WHERE id='$act' LIMIT 1");
+				}else{
+					$exito = FALSE;
+				}
+			}
+
+			return $exito;
 		}
 	}
 }

@@ -13,13 +13,24 @@
 	<fieldset class="inlineLabels">
 		<legend>Actividad de Equipo</legend>
 		<div class="ctrlHolder">
-			<label for="grupal">Seleccionar:</label>
+			<label for="grupal1">Actividad 1:</label>
 			<span class="inputHolder">
-				<select name="Datos[grupal]" id="grupal" class="chosen">
+				<select name="Grupal[grupal1]" id="grupal1" class="chosen">
 					<?php echo $this->actividad->combo_equipo(); ?>
 				</select>
-				<p class="formHint">actividad que harán todos los integrantes</p>
-				<?php echo form_error('Datos[grupal]'); ?>
+				<p class="formHint">primera actividad que harán todos los integrantes</p>
+				<?php echo form_error('Grupal[grupal1]'); ?>
+			</span>
+		</div>
+
+		<div class="ctrlHolder">
+			<label for="grupal2">Actividad 2:</label>
+			<span class="inputHolder">
+				<select name="Grupal[grupal2]" id="grupal2" class="chosen">
+					<?php echo $this->actividad->combo_equipo(); ?>
+				</select>
+				<p class="formHint">segunda actividad que harán todos los integrantes</p>
+				<?php echo form_error('Grupal[grupal2]'); ?>
 			</span>
 		</div>
 	</fieldset>

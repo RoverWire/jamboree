@@ -21,7 +21,11 @@ class registros extends Controller{
 			$this->form_validation->set_rules('lobato[1]', 'Elemento 2',  'trim|required|exact_length[10]|xss_clean|scout_vigente|pago_evento|lobato_registrado');
 			$this->form_validation->set_rules('lobato[2]', 'Elemento 3',  'trim|required|exact_length[10]|xss_clean|scout_vigente|pago_evento|lobato_registrado');
 			$this->form_validation->set_rules('lobato[3]', 'Elemento 4',  'trim|required|exact_length[10]|xss_clean|scout_vigente|pago_evento|lobato_registrado');
-			$this->form_validation->set_rules('lobato[4]', 'Elemento 5',  'trim|required|exact_length[10]|xss_clean|scout_vigente|pago_evento|lobato_registrado');
+			
+			if($_POST['lobato'][4] != ''){
+				$this->form_validation->set_rules('lobato[4]', 'Elemento 5',  'trim|exact_length[10]|xss_clean|scout_vigente|pago_evento|lobato_registrado');
+			}
+			
 			if($_POST['lobato'][5] != ''){
 				$this->form_validation->set_rules('lobato[5]', 'Elemento 5',  'trim|exact_length[10]|xss_clean|scout_vigente|pago_evento|lobato_registrado');
 
@@ -36,6 +40,18 @@ class registros extends Controller{
 
 			if($_POST['lobato'][8] != ''){
 				$this->form_validation->set_rules('lobato[8]', 'Elemento 9', 'trim|exact_length[10]|xss_clean|scout_vigente|pago_evento|lobato_registrado');
+			}
+
+			if($_POST['lobato'][9] != ''){
+				$this->form_validation->set_rules('lobato[9]', 'Elemento 10', 'trim|exact_length[10]|xss_clean|scout_vigente|pago_evento|lobato_registrado');
+			}
+
+			if($_POST['lobato'][10] != ''){
+				$this->form_validation->set_rules('lobato[10]', 'Elemento 11', 'trim|exact_length[10]|xss_clean|scout_vigente|pago_evento|lobato_registrado');
+			}
+
+			if($_POST['lobato'][11] != ''){
+				$this->form_validation->set_rules('lobato[11]', 'Elemento 12', 'trim|exact_length[10]|xss_clean|scout_vigente|pago_evento|lobato_registrado');
 			}
 			
 			if($this->form_validation->run())

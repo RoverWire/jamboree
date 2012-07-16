@@ -45,7 +45,7 @@ class Registro extends MY_Model {
 		$this->db->where('responsable', $cum);
 		$this->resultado = $this->db->get();
 		$this->asignar_registro();
-		$total = $this->contador + 1;
+		$total = $this->contador;
 		$this->liberar_resultados();
 		
 		$this->db->select('provincia');

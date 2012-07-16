@@ -134,6 +134,12 @@ class Actividades extends Controller {
 			redirect('registros');
 		}
 
+		if($_POST){
+			if($this->actividad->asignar($cum, $this->input->post('Grupal'), $this->input->post('Datos'))){
+				redirect('registros/paso2/'.$cum);
+			}
+		}
+
 		$this->load->model('registros/registro');
 		$this->load->model('regnal/miembro');
 		$this->registro->detalles($cum);
