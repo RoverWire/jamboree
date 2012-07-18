@@ -137,6 +137,8 @@ class Actividades extends Controller {
 		if($_POST){
 			if($this->actividad->asignar($cum, $this->input->post('Grupal'), $this->input->post('Datos'))){
 				redirect('registros/paso2/'.$cum);
+			}else{
+				redirect('actividades/sin_cupo/'.$cum);
 			}
 		}
 
@@ -151,6 +153,42 @@ class Actividades extends Controller {
 		$this->template->add_css('temas/registro/css/chosen.css');
 		$this->template->write_view('content', 'asignacion', $Datos);
 		$this->template->render();
+	}
+
+	public function sin_cupo($cum = '')
+	{
+		if (empty($cum)) {
+			redirect('registros');
+		}
+
+		if ($_POST) {
+			if(!isset($_POST['Grupal'])) {
+				$_POST['Grupal'] = array();
+			}
+
+			if(!isset($_POST['Datos'])) {
+				$_POST['Datos'] = array();
+			}
+
+			if ($this->actividad->asignar($cum, $this->input->post('Grupal'), $this->input->post('Datos'))) {
+				redirect('registros/paso2/'.$cum);
+			}else{
+				redirect('actividades/sin_cupo/'.$cum);
+			}
+		}
+
+		$this->load->model('registros/registro');
+		$this->load->model('regnal/miembro');
+		$this->registro->detalles($cum);
+		$Datos = array('grupal' => '');
+
+		$this->template->add_js('js/jquery.uniform.js');
+		$this->template->write('content', '<h1 class="titulo_seccion">Asignar Actividades</h1>');
+		$this->template->add_js('js/chosen.jquery.js');
+		$this->template->add_css('temas/registro/css/chosen.css');
+		$this->template->write_view('content', 'sin_cupo', $Datos);
+		$this->template->render();
+
 	}
 
 }
