@@ -179,8 +179,14 @@ class Actividades extends Controller {
 
 		$this->load->model('registros/registro');
 		$this->load->model('regnal/miembro');
+
+		$Datos = array();
+		
+		$Datos['actividad1'] = $this->actividad->sin_grupal($cum, 1);
+		$Datos['actividad2'] = $this->actividad->sin_grupal($cum, 2);
+		$Datos['elemento']	 = $this->actividad->sin_actividad($cum);
+
 		$this->registro->detalles($cum);
-		$Datos = array('grupal' => '');
 
 		$this->template->add_js('js/jquery.uniform.js');
 		$this->template->write('content', '<h1 class="titulo_seccion">Asignar Actividades</h1>');
@@ -189,6 +195,14 @@ class Actividades extends Controller {
 		$this->template->write_view('content', 'sin_cupo', $Datos);
 		$this->template->render();
 
+	}
+
+	public function monitor()
+	{
+		$this->actividad->consultar();
+		$this->template->write('content', '<h1 class="titulo_seccion">Ocupación Actividades</h1>');
+		$this->template->write_view('content', 'monitor');
+		$this->template->render();
 	}
 
 }

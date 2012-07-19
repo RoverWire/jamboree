@@ -53,6 +53,27 @@ class Actividad extends MY_Model{
 		return $options;
 	}
 
+	public function sin_grupal($cum, $act = 1)
+	{
+		$act = ($act == 2) ? $act:1;
+		$actividad = 'actividad' . $act;
+
+		$this->db->select('scouter')->from('seisenas')->where($actividad, '')->where('scouter', $cum);
+		return $this->db->count_all_results();
+	}
+
+	public function sin_actividad($cum)
+	{
+		$this->db->select("p.idseisena, s.nombre AS scouter_nombre, s.grupo AS scouter_grupo, s.provincia AS scouter_provincia, s.cum AS scouter_cum, l.nombre AS lobato_nombre, l.grupo AS lobato_grupo, l.provincia AS lobato_provincia, l.cum AS lobato_cum, YEAR(CURDATE())-YEAR(l.nacimiento) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(l.nacimiento,'%m-%d'), 0, -1) AS lobato_edad", FALSE);
+		$this->db->from('participantes AS p');
+		$this->db->join('regnal AS s', 'p.responsable = s.cum', 'LEFT');
+		$this->db->join('regnal AS l', 'p.cum = l.cum');
+		$this->db->where('p.responsable', $cum);
+		$this->db->where('p.actividad', '');
+
+		return $this->db->get();
+	}
+
 	public function asignar($scouter, $grupal, $individual)
 	{
 		if(is_array($grupal) && is_array($individual) && !empty($scouter))
@@ -65,7 +86,7 @@ class Actividad extends MY_Model{
 
 				if($result){
 					$this->db->where('scouter', $scouter)->update('seisenas', array('actividad1' => $grupal['grupal1']));
-					$this->db->simple_query("UPDATE actividades SET ocupacion=ocupacion+1 WHERE id=".$grupal['grupal1'].";");
+					$this->db->simple_query("UPDATE actividades SET ocupacion=ocupacion+".count($individual)." WHERE id=".$grupal['grupal1'].";");
 				}else{
 					$exito = FALSE;
 				}
@@ -77,7 +98,7 @@ class Actividad extends MY_Model{
 
 				if($result){
 					$this->db->where('scouter', $scouter)->update('seisenas', array('actividad1' => $grupal['grupal2']));
-					$this->db->simple_query("UPDATE actividades SET ocupacion=ocupacion+1 WHERE id=".$grupal['grupal2'].";");
+					$this->db->simple_query("UPDATE actividades SET ocupacion=ocupacion+".count($individual)." WHERE id=".$grupal['grupal2'].";");
 				}else{
 					$exito = FALSE;
 				}
