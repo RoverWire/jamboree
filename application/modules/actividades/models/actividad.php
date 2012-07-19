@@ -93,7 +93,7 @@ class Actividad extends MY_Model{
 			}
 
 			if (isset($grupal['grupal2'])) {
-				$this->db->where('ocupacion + '.count($individual).') <= capacidad')->where('id', $grupal['grupal2'])->from($this->tabla['nombre']);
+				$this->db->where('(ocupacion + '.count($individual).') <= capacidad')->where('id', $grupal['grupal2'])->from($this->tabla['nombre']);
 				$result = $this->db->count_all_results();
 
 				if($result){
