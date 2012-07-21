@@ -161,12 +161,15 @@ class Actividades extends Controller {
 			redirect('registros');
 		}
 
+		$this->load->model('registros/registro');
+		$this->load->model('regnal/miembro');
+
 		if ($_POST) {
-			if(!isset($_POST['Grupal'])) {
+			if(!$this->input->post('Grupal')) {
 				$_POST['Grupal'] = array();
 			}
 
-			if(!isset($_POST['Datos'])) {
+			if(!$this->input->post('Datos')) {
 				$_POST['Datos'] = array();
 			}
 
@@ -177,14 +180,15 @@ class Actividades extends Controller {
 			}
 		}
 
-		$this->load->model('registros/registro');
-		$this->load->model('regnal/miembro');
-
 		$Datos = array();
 		
 		$Datos['actividad1'] = $this->actividad->sin_grupal($cum, 1);
 		$Datos['actividad2'] = $this->actividad->sin_grupal($cum, 2);
 		$Datos['elemento']	 = $this->actividad->sin_actividad($cum);
+
+		if ($Datos['actividad1'] == 0 && $Datos['actividad2'] == 0 && $Datos['elemento']->num_rows() == 0) {
+			redirect('registros/paso2/'.$cum);
+		}
 
 		$this->registro->detalles($cum);
 

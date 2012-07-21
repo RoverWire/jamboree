@@ -80,25 +80,33 @@ class Actividad extends MY_Model{
 		{
 			$exito = TRUE;
 
+			if(count($individual) == 0){
+				$num_elementos = $this->db->where('responsable', $scouter)->from('participantes')->count_all_results();
+			}else{
+				$num_elementos = count($individual);
+			}
+
 			if (isset($grupal['grupal1'])) {
-				$this->db->where('(ocupacion + '.count($individual).') <= capacidad')->where('id', $grupal['grupal1'])->from($this->tabla['nombre']);
+				$this->db->where("(ocupacion + $num_elementos) <= capacidad")->where('id', $grupal['grupal1'])->from($this->tabla['nombre']);
 				$result = $this->db->count_all_results();
 
 				if($result){
-					$this->db->where('scouter', $scouter)->update('seisenas', array('actividad1' => $grupal['grupal1']));
-					$this->db->simple_query("UPDATE actividades SET ocupacion=ocupacion+".count($individual)." WHERE id=".$grupal['grupal1'].";");
+					//$this->db->where('scouter', $scouter)->update('seisenas', array('actividad1' => $grupal['grupal1']));
+					$this->db->simple_query("UPDATE actividades SET ocupacion=(ocupacion + $num_elementos) WHERE id=".$grupal['grupal1'].";");
+					$this->db->simple_query("UPDATE seisenas SET actividad1='".$grupal['grupal1']."' WHERE scouter='$scouter';");
 				}else{
 					$exito = FALSE;
 				}
 			}
 
 			if (isset($grupal['grupal2'])) {
-				$this->db->where('(ocupacion + '.count($individual).') <= capacidad')->where('id', $grupal['grupal2'])->from($this->tabla['nombre']);
+				$this->db->where("(ocupacion + $num_elementos) <= capacidad")->where('id', $grupal['grupal2'])->from($this->tabla['nombre']);
 				$result = $this->db->count_all_results();
 
 				if($result){
-					$this->db->where('scouter', $scouter)->update('seisenas', array('actividad1' => $grupal['grupal2']));
-					$this->db->simple_query("UPDATE actividades SET ocupacion=ocupacion+".count($individual)." WHERE id=".$grupal['grupal2'].";");
+					//$this->db->where('scouter', $scouter)->update('seisenas', array('actividad1' => $grupal['grupal2']));
+					$this->db->simple_query("UPDATE actividades SET ocupacion=(ocupacion + $num_elementos) WHERE id=".$grupal['grupal2'].";");
+					$this->db->simple_query("UPDATE seisenas SET actividad2='".$grupal['grupal2']."' WHERE scouter='$scouter';");
 				}else{
 					$exito = FALSE;
 				}

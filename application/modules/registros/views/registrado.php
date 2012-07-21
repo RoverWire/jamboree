@@ -34,7 +34,7 @@ $(function() {
 					text : data.cum
 				});
 			}else{
-				window.location = '<?php echo ruta('registros/paso2/'); ?>' + data.noerror;	
+				window.location = '<?php echo ruta('actividades/sin_cupo/'); ?>' + data.noerror;	
 			}
 		$('#loader_scouter').addClass('hide');
 		}, 'json');
